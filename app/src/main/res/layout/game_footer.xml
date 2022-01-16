@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="enableUndo"
+            type="java.lang.Boolean" />
+        <variable
+            name="isPaused"
+            type="java.lang.Boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/footer_height"
+        android:background="@color/footerBackground">
+
+
+        <Button
+            android:id="@+id/undo"
+            style="@style/Button"
+            android:text="@string/buttonUndoTitle"
+            android:enabled="@{enableUndo}"/>
+
+        <Button
+            android:id="@+id/pause"
+            style="@style/Button"
+            android:text="@string/buttonPauseTitle"
+            android:visibility="@{isPaused?View.GONE: View.VISIBLE }"/>
+
+        <Button
+            android:id="@+id/resume"
+            style="@style/Button"
+            android:text="@string/buttonResumeTitle"
+            android:visibility="@{isPaused?View.VISIBLE: View.GONE }" />
+    </LinearLayout>
+</layout>

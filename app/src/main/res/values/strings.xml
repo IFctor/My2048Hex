@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">2048</string>
+    <string name="buttonPauseTitle">Szünet</string>
+    <string name="buttonUndoTitle">Visszavonás</string>
+    <string name="buttonStartGameTitle">Játék indítása</string>
+
+    <string name="gameTitle">2048</string>
+    <string name="result_description">Az Ön pontszáma: %d</string>
+    <string name="buttonResumeTitle">Folytatás</string>
+    <string name="buttonGiveUpTitle">Feladom</string>
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startGameFragment">
+
+    <fragment
+        android:id="@+id/startGameFragment"
+        android:name="hu.uni.miskolc.iit.mobile.my2048.app.fragment.StartGameFragment"
+        android:label="start_game_fragment"
+        tools:layout="@layout/start_game_fragment">
+        <action
+            android:id="@+id/action_startGameFragment_to_levelSelectorFragment"
+            app:destination="@id/levelSelectorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/levelSelectorFragment"
+        android:name="hu.uni.miskolc.iit.mobile.my2048.app.fragment.LevelSelectorSelectorFragment"
+        android:label="level_selector_fragment"
+        tools:layout="@layout/level_selector_fragment" >
+        <action
+            android:id="@+id/action_categoryPickerFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="hu.uni.miskolc.iit.mobile.my2048.app.fragment.GameFragment"
+        android:label="game_fragment"
+        tools:layout="@layout/game_fragment" >
+        <action
+            android:id="@+id/action_gameFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="level"
+            app:argType="hu.uni.miskolc.iit.mobile.my2048.core.domain.Level" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="hu.uni.miskolc.iit.mobile.my2048.app.fragment.ResultFragment"
+        android:label="result_fragment"
+        tools:layout="@layout/result_fragment" >
+        <action
+            android:id="@+id/action_resultFragment_to_startGameFragment"
+            app:destination="@id/startGameFragment"
+            app:popUpTo="@id/startGameFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

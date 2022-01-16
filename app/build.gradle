@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk rootProject.ext.compile_sdk_version
+
+    defaultConfig {
+        applicationId "hu.uni.miskolc.iit.mobile.my2048.app"
+        minSdk rootProject.ext.min_sdk_version
+        targetSdk rootProject.ext.target_sdk_version
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.source_compatibility
+        targetCompatibility rootProject.ext.target_compatibility
+    }
+    kotlinOptions {
+        jvmTarget = rootProject.ext.jvmTarget
+    }
+}
+
+dependencies {
+    //implementation 'androidx.databinding:databinding-common:7.0.4'
+    def projectDeps = rootProject.ext.project
+    def appDeps = rootProject.ext.app
+    def testDeps = rootProject.ext.test
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
+
+    implementation projectDeps.koin
+    implementation projectDeps.koinCore
+    implementation project(':framework')
+    implementation appDeps.material
+    implementation appDeps.navFragment
+    testImplementation testDeps.junit
+    androidTestImplementation testDeps.ext_junit
+    androidTestImplementation testDeps.espresso
+}
